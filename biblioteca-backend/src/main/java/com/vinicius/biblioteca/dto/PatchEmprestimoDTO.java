@@ -1,6 +1,6 @@
 package com.vinicius.biblioteca.dto;
 
-import com.vinicius.biblioteca.enums.Status; // (Ou com.vinicius.biblioteca.model.Emprestimo.Status, dependendo de onde está o teu Enum)
+import com.vinicius.biblioteca.enums.Status;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;

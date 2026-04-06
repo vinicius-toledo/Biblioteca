@@ -5,7 +5,7 @@ import { EmprestimoGestaoComponent } from './components/emprestimo-gestao/empres
 
 export const routes: Routes = [
   { path: 'usuarios', component: UsuarioFormComponent },
-  { path: 'livros', component: LivroGoogleComponent }, // Onde você cadastra livros
+  { path: 'livros', component: LivroGoogleComponent }, 
   { path: 'emprestimos', component: EmprestimoGestaoComponent },
-  { path: '', redirectTo: '/emprestimos', pathMatch: 'full' } // Tela inicial padrão
+  { path: '', redirectTo: '/emprestimos', pathMatch: 'full' } 
 ];

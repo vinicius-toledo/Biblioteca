@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { BibliotecaService } from '../../services/biblioteca.service';
 @Component({
   selector: 'app-usuario-form',
-  standalone: true, // Adicione isso se não tiver
+  standalone: true, 
   imports: [CommonModule, FormsModule], 
   templateUrl: './usuario-form.html',
   styleUrl: './usuario-form.css',

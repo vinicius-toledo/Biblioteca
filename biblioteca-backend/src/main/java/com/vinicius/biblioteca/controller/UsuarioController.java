@@ -1,6 +1,6 @@
 package com.vinicius.biblioteca.controller;
 
-import com.vinicius.biblioteca.dto.UsuarioDTO; // 👈 O import que faltava!
+import com.vinicius.biblioteca.dto.UsuarioDTO;
 import com.vinicius.biblioteca.model.Livro;
 import com.vinicius.biblioteca.model.Usuario;
 import com.vinicius.biblioteca.service.RecomendacaoService;

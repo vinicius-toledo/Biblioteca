@@ -29,7 +29,4 @@ public class LivroDTO {
 
     @NotBlank(message = "Categoria é obrigatória")
     private String categoria;
-
-    // Podemos deixar este campo para quando formos devolver dados para a tela
-   // private Boolean disponivelParaEmprestimo;
 }
