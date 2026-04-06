@@ -28,6 +28,4 @@ public class LivroService {
     public void deletar(Integer id) {
         livroRepository.deleteById(id);
     }
-
-
 }

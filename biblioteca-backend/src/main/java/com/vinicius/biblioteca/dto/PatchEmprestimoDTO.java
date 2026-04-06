@@ -2,6 +2,7 @@ package com.vinicius.biblioteca.dto;
 
 import com.vinicius.biblioteca.enums.Status;
 import jakarta.validation.constraints.NotNull;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

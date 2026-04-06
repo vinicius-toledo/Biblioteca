@@ -7,9 +7,12 @@ import com.vinicius.biblioteca.model.Emprestimo;
 import com.vinicius.biblioteca.model.Livro;
 import com.vinicius.biblioteca.model.Usuario;
 import com.vinicius.biblioteca.service.EmprestimoService;
+
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+
 import jakarta.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

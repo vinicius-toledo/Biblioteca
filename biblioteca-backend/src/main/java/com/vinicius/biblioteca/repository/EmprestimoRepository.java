@@ -2,6 +2,7 @@ package com.vinicius.biblioteca.repository;
 
 import com.vinicius.biblioteca.enums.Status;
 import com.vinicius.biblioteca.model.Emprestimo;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

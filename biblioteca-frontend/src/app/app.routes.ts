@@ -7,5 +7,5 @@ export const routes: Routes = [
   { path: 'usuarios', component: UsuarioFormComponent },
   { path: 'livros', component: LivroGoogleComponent }, 
   { path: 'emprestimos', component: EmprestimoGestaoComponent },
-  { path: '', redirectTo: '/emprestimos', pathMatch: 'full' } 
+  { path: '', redirectTo: '/usuarios', pathMatch: 'full' } 
 ];

@@ -65,7 +65,6 @@ class UsuarioServiceTest {
         RuntimeException exception = assertThrows(RuntimeException.class, () -> {
             usuarioService.buscarPorId(99);
         });
-
         assertEquals("Usuario não encontrado!", exception.getMessage());
     }
 }
