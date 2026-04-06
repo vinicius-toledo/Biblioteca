@@ -1,0 +1,35 @@
+<nav style="background: #1a2a3a; padding: 0 40px; display: flex; justify-content: space-between; align-items: center; height: 70px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); position: sticky; top: 0; z-index: 1000;">
+  
+  <div style="display: flex; align-items: center; gap: 12px;">
+    <i class="fa-solid fa-book-open-reader" style="font-size: 28px; color: #3498db;"></i>
+    <h2 style="color: #ffffff; margin: 0; font-family: 'Segoe UI', sans-serif; letter-spacing: 2px; font-weight: 700; font-size: 22px;">
+      BIBLIO<span style="color: #3498db;">TECH</span>
+    </h2>
+  </div>
+  
+  <div style="display: flex; gap: 35px;">
+    
+    <a routerLink="/usuarios" 
+       routerLinkActive="active-link" 
+       style="color: #ecf0f1; text-decoration: none; font-size: 14px; font-weight: 600; text-transform: uppercase; transition: 0.3s; display: flex; align-items: center; gap: 8px;">
+      <i class="fa-solid fa-users"></i> Usuários
+    </a>
+
+    <a routerLink="/livros" 
+       routerLinkActive="active-link" 
+       style="color: #ecf0f1; text-decoration: none; font-size: 14px; font-weight: 600; text-transform: uppercase; transition: 0.3s; display: flex; align-items: center; gap: 8px;">
+      <i class="fa-solid fa-book-journal-whills"></i> Livros
+    </a>
+
+    <a routerLink="/emprestimos" 
+       routerLinkActive="active-link" 
+       style="color: #ecf0f1; text-decoration: none; font-size: 14px; font-weight: 600; text-transform: uppercase; transition: 0.3s; display: flex; align-items: center; gap: 8px;">
+      <i class="fa-solid fa-handshake-angle"></i> Empréstimos
+    </a>
+
+  </div>
+</nav>
+
+<div style="background-color: #f4f7f6; min-height: calc(100vh - 70px); padding: 40px;">
+  <router-outlet></router-outlet>
+</div>

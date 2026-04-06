@@ -1,0 +1,53 @@
+<div style="max-width: 1100px; margin: 0 auto; font-family: 'Segoe UI', sans-serif; padding: 20px;">
+
+  <div style="background: white; padding: 40px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border: 1px solid #e1e8ed; margin-bottom: 40px;">
+    <h3 style="color: #2c3e50; margin-top: 0; border-bottom: 3px solid #3498db; padding-bottom: 15px; display: inline-block; font-size: 28px; font-weight: 700;">
+      <i class="fa-solid fa-magnifying-glass" style="color: #3498db; margin-right: 15px;"></i>Buscar na Internet
+    </h3>
+    <p style="color: #7f8c8d; margin-bottom: 25px; font-size: 16px;">Importe dados automaticamente da API do Google Books.</p>
+    
+    <div style="display: flex; gap: 15px;">
+      <input type="text" [(ngModel)]="termoBusca" placeholder="Ex: Harry Potter, O Senhor dos Anéis..." 
+             style="flex: 1; padding: 18px; border: 2px solid #d1d9e0; border-radius: 8px; font-size: 16px; outline: none;">
+      <button (click)="buscarNoGoogle()" 
+              style="background: #3498db; color: white; padding: 0 30px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 16px; transition: 0.3s;">
+        BUSCAR E ADICIONAR
+      </button>
+    </div>
+  </div>
+
+  <div style="background: white; padding: 40px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border: 1px solid #e1e8ed;">
+    <h3 style="color: #2c3e50; margin-top: 0; border-bottom: 3px solid #e67e22; padding-bottom: 15px; display: inline-block; font-size: 28px; font-weight: 700;">
+      <i class="fa-solid fa-book" style="color: #e67e22; margin-right: 15px;"></i>Cadastro Manual
+    </h3>
+    
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-top: 30px;">
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <label style="font-weight: 600; color: #5a6c7d; font-size: 16px;">Título do Livro</label>
+        <input type="text" [(ngModel)]="novoLivro.titulo" style="padding: 16px; border: 2px solid #d1d9e0; border-radius: 8px; font-size: 16px;">
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <label style="font-weight: 600; color: #5a6c7d; font-size: 16px;">Autor</label>
+        <input type="text" [(ngModel)]="novoLivro.autor" style="padding: 16px; border: 2px solid #d1d9e0; border-radius: 8px; font-size: 16px;">
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <label style="font-weight: 600; color: #5a6c7d; font-size: 16px;">ISBN</label>
+        <input type="text" [(ngModel)]="novoLivro.isbn" style="padding: 16px; border: 2px solid #d1d9e0; border-radius: 8px; font-size: 16px;">
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <label style="font-weight: 600; color: #5a6c7d; font-size: 16px;">Categoria</label>
+        <select [(ngModel)]="novoLivro.categoria" style="padding: 16px; border: 2px solid #d1d9e0; border-radius: 8px; font-size: 16px; background: white; cursor: pointer;">
+          <option value="">Selecione uma Categoria</option>
+          <option value="TECNOLOGIA">Tecnologia</option>
+          <option value="FICCAO">Ficção</option>
+          <option value="LITERATURA">Literatura</option>
+        </select>
+      </div>
+    </div>
+
+    <button (click)="salvarManual()" 
+            style="width: 100%; margin-top: 30px; background: #e67e22; color: white; padding: 18px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 16px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; box-shadow: 0 4px 15px rgba(230, 126, 34, 0.2);">
+      SALVAR LIVRO MANUALMENTE
+    </button>
+  </div>
+</div>

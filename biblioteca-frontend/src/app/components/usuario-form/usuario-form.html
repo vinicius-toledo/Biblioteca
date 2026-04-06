@@ -1,0 +1,41 @@
+<div style="max-width: 900px; margin: 0 auto; font-family: 'Segoe UI', sans-serif; padding: 20px;">
+  
+  <div style="background: white; padding: 40px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border: 1px solid #e1e8ed;">
+    <h3 style="color: #2c3e50; margin-top: 0; border-bottom: 3px solid #27ae60; padding-bottom: 15px; display: inline-block; font-size: 28px; font-weight: 700;">
+      <i class="fa-solid fa-user-plus" style="color: #27ae60; margin-right: 15px;"></i>Cadastro de Usuário
+    </h3>
+
+    <div style="display: grid; grid-template-columns: 1fr; gap: 25px; margin-top: 30px;">
+      
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <label style="font-weight: 600; color: #5a6c7d; font-size: 16px;">Nome Completo</label>
+        <input type="text" [(ngModel)]="usuario.nome" placeholder="Ex: Vinícius Toledo" 
+               style="padding: 16px; border: 2px solid #d1d9e0; border-radius: 8px; font-size: 16px; outline: none; background: #fafbfc;">
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px;">
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <label style="font-weight: 600; color: #5a6c7d; font-size: 16px;">E-mail</label>
+          <input type="email" [(ngModel)]="usuario.email" placeholder="teste@email.com"
+                 style="padding: 16px; border: 2px solid #d1d9e0; border-radius: 8px; font-size: 16px;">
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <label style="font-weight: 600; color: #5a6c7d; font-size: 16px;">Telefone</label>
+          <input type="text" [(ngModel)]="usuario.telefone" placeholder="(11) 99999-9999"
+                 style="padding: 16px; border: 2px solid #d1d9e0; border-radius: 8px; font-size: 16px;">
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; align-items: end;">
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <label style="font-weight: 600; color: #5a6c7d; font-size: 16px;">Data de Cadastro</label>
+          <input type="date" [(ngModel)]="usuario.dataCadastro" style="padding: 15px; border: 2px solid #d1d9e0; border-radius: 8px; font-size: 16px;">
+        </div>
+        <button (click)="salvarUsuario()" 
+                style="background: #27ae60; color: white; padding: 15px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 16px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; height: 58px; box-shadow: 0 4px 15px rgba(39, 174, 96, 0.2);">
+          SALVAR USUÁRIO
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

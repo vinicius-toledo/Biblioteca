@@ -1,0 +1,93 @@
+<div style="max-width: 1200px; margin: 0 auto; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px;">
+
+  <div style="background: white; padding: 40px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border: 1px solid #e1e8ed; margin-bottom: 40px;">
+    <h3 style="color: #2c3e50; margin-top: 0; border-bottom: 3px solid #3498db; padding-bottom: 15px; display: inline-block; font-size: 28px; font-weight: 700;">
+      <i class="fa-solid fa-handshake" style="color: #3498db; margin-right: 15px;"></i>Novo Empréstimo
+    </h3>
+    
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px;">
+      
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <label style="font-weight: 600; color: #5a6c7d; font-size: 16px;">
+          <i class="fa-solid fa-user" style="margin-right: 8px;"></i>Selecionar Usuário
+        </label>
+        <select [(ngModel)]="novoEmprestimo.usuario.id" (change)="buscarRecomendacoes()" style="padding: 16px; border: 2px solid #d1d9e0; border-radius: 8px; outline: none; background: #fafbfc; font-size: 16px; cursor: pointer;">
+          <option [ngValue]="null">Escolha o usuário...</option>
+          <option *ngFor="let u of usuarios" [value]="u.id">{{ u.nome }} (ID: {{ u.id }})</option>
+        </select>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <label style="font-weight: 600; color: #5a6c7d; font-size: 16px;">
+          <i class="fa-solid fa-book" style="margin-right: 8px;"></i>Selecionar Livro
+        </label>
+        <select [(ngModel)]="novoEmprestimo.livro.id" style="padding: 16px; border: 2px solid #d1d9e0; border-radius: 8px; outline: none; background: #fafbfc; font-size: 16px; cursor: pointer;">
+          <option [ngValue]="null">Escolha o livro...</option>
+          <option *ngFor="let l of livros" [value]="l.id">{{ l.titulo }}</option>
+        </select>
+      </div>
+    </div>
+
+    <div *ngIf="recomendacoes.length > 0" style="background: #e3f2fd; padding: 20px; border-radius: 12px; margin-top: 30px; border-left: 8px solid #3498db; box-shadow: 0 4px 15px rgba(52, 152, 219, 0.1);">
+      <strong style="color: #0d47a1; display: block; margin-bottom: 10px; font-size: 18px;">
+        <i class="fa-solid fa-star" style="color: #f1c40f; margin-right: 10px;"></i>Dica Literária Premium:
+      </strong>
+      <span style="color: #1565c0; font-size: 16px; line-height: 1.6;">Baseado no seu histórico, você pode gostar de ler: 
+        <b *ngFor="let rec of recomendacoes; last as isLast" style="color: #0d47a1; font-weight: 700;">{{ rec.titulo }}{{ isLast ? '' : ', ' }}</b>.
+      </span>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 30px; margin-top: 30px; align-items: end;">
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <label style="font-weight: 600; color: #5a6c7d; font-size: 16px;">
+          <i class="fa-solid fa-calendar-day" style="margin-right: 8px;"></i>Data Retirada
+        </label>
+        <input type="date" [(ngModel)]="novoEmprestimo.dataEmprestimo" style="padding: 15px; border: 2px solid #d1d9e0; border-radius: 8px; font-size: 16px;">
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <label style="font-weight: 600; color: #5a6c7d; font-size: 16px;">
+          <i class="fa-solid fa-clock" style="margin-right: 8px;"></i>Previsão Devolução
+        </label>
+        <input type="date" [(ngModel)]="novoEmprestimo.dataDevolucao" style="padding: 15px; border: 2px solid #d1d9e0; border-radius: 8px; font-size: 16px;">
+      </div>
+      <button (click)="finalizarEmprestimo()" style="background: #3498db; color: white; padding: 15px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 16px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; height: 55px; box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);">
+        CONFIRMAR EMPRÉSTIMO
+      </button>
+    </div>
+  </div>
+
+  <div style="background: white; padding: 35px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border: 1px solid #e1e8ed;">
+    <h3 style="color: #2c3e50; margin-top: 0; margin-bottom: 30px; font-size: 26px; font-weight: 700;">
+      <i class="fa-solid fa-rectangle-list" style="color: #2c3e50; margin-right: 15px;"></i>Histórico de Movimentações
+    </h3>
+    <table style="width: 100%; border-collapse: collapse; font-size: 16px;">
+      <thead>
+        <tr style="background: #f8f9fa; border-bottom: 3px solid #e1e8ed;">
+          <th style="padding: 20px; text-align: left; color: #5a6c7d; font-size: 14px; text-transform: uppercase; font-weight: 700; letter-spacing: 1px;">Usuário</th>
+          <th style="padding: 20px; text-align: left; color: #5a6c7d; font-size: 14px; text-transform: uppercase; font-weight: 700; letter-spacing: 1px;">Livro</th>
+          <th style="padding: 20px; text-align: center; color: #5a6c7d; font-size: 14px; text-transform: uppercase; font-weight: 700; letter-spacing: 1px;">Status</th>
+          <th style="padding: 20px; text-align: center; color: #5a6c7d; font-size: 14px; text-transform: uppercase; font-weight: 700; letter-spacing: 1px;">Ação</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let emp of emprestimosRegistrados" style="border-bottom: 1px solid #f1f1f1; transition: 0.2s;">
+          <td style="padding: 20px; color: #2c3e50; font-weight: 600; font-size: 16px;">{{ emp.usuario.nome }}</td>
+          <td style="padding: 20px; color: #2c3e50; font-size: 16px;">{{ emp.livro.titulo }}</td>
+          <td style="padding: 20px; text-align: center;">
+            <span [style.background]="emp.status === 'ATIVO' ? '#e6fffa' : '#f7fafc'" 
+                  [style.color]="emp.status === 'ATIVO' ? '#2c7a7b' : '#718096'" 
+                  style="padding: 6px 16px; border-radius: 20px; font-size: 12px; font-weight: bold; border: 2px solid currentColor; text-transform: uppercase; letter-spacing: 1px;">
+              {{ emp.status }}
+            </span>
+          </td>
+          <td style="padding: 20px; text-align: center;">
+            <button *ngIf="emp.status === 'ATIVO'" (click)="devolverLivro(emp.id)" 
+                    style="background: transparent; color: #e74c3c; border: 2px solid #e74c3c; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; box-shadow: 0 2px 5px rgba(231, 76, 60, 0.1);">
+              DEVOLVER
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

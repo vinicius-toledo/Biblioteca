@@ -1,0 +1,17 @@
+/* Cor do link quando ele está selecionado/ativo */
+.active-link {
+  color: #3498db !important;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 5px;
+}
+
+/* Efeito ao passar o mouse nos links do menu */
+nav a:hover {
+  color: #3498db !important;
+  transform: translateY(-2px);
+}
+
+/* Garantir que a transição seja suave */
+nav a {
+  transition: all 0.3s ease;
+}
