@@ -1,102 +1,78 @@
-# Biblioteca
+#  Sistema de Gestão de Biblioteca 
 
-Aplicação de gerenciamento de biblioteca, composta por:
+Este projeto é uma solução fullstack para o gerenciamento de uma biblioteca, permitindo o controle de usuários, acervo de livros e empréstimos, com regras de negócio inteligentes e integração com a API externa do Google Books.
 
-- `biblioteca-backend`: API REST em Spring Boot.
-- `biblioteca-frontend`: interface web em Angular.
+---
 
-## Requisitos
+##  Tecnologias Utilizadas
 
-Antes de iniciar, tenha instalado:
+### **Backend**
+* **Java 17** com **Spring Boot 3**
+* **Spring Data JPA** (Persistência de dados)
+* **PostgreSQL** (Banco de dados relacional)
+* **JUnit 5 & Mockito** (Testes unitários de serviço)
+* **Maven** (Gerenciador de dependências)
 
-- Java 17
-- Maven 3.9+
-- Node.js 20+ (com npm)
-- PostgreSQL 14+ (ou versão compatível)
+### **Frontend**
+* **Angular 17+** (Componentes Standalone e Roteamento)
+* **Font Awesome 6** (Ícones profissionais)
+* **FormsModule & HttpClient** (Integração com API e reatividade)
 
-## Estrutura do projeto
+---
 
-```text
-Biblioteca/
-|- biblioteca-backend/
-`- biblioteca-frontend/
-```
+##  Funcionalidades e Regras de Negócio
 
-## Configuração do banco de dados (PostgreSQL)
+O sistema foi desenvolvido atendendo a todos os requisitos do desafio técnico:
 
-O backend usa PostgreSQL com JPA/Hibernate (`ddl-auto=update`), então as tabelas são criadas/atualizadas automaticamente ao subir a API.
+1.  **CRUD Completo:** Cadastro e listagem de Usuários e Livros.
+2.  **Gestão de Empréstimos:** * Controle de datas de retirada e previsão de entrega.
+    * **Regra de Bloqueio:** O sistema impede o empréstimo de um livro que já possua um registro ativo.
+3.  **Sistema de Recomendação Inteligente:** Lógica baseada na categoria dos livros devolvidos pelo usuário. O sistema sugere títulos da mesma categoria que o usuário já demonstrou interesse, incentivando a leitura.
+4.  **Integração com Google Books (Bônus):** Busca automatizada por título através da API do Google, permitindo cadastrar livros no acervo diretamente pelo frontend.
 
-### 1) Criar o banco
+---
 
-No PostgreSQL, execute:
+##  Como Executar o Projeto
 
-```sql
-CREATE DATABASE biblioteca_db;
-```
+De acordo com as instruções solicitadas, siga os passos abaixo para rodar a aplicação localmente:
 
-### 2) Configurar credenciais no backend
-
-Edite o arquivo `biblioteca-backend/src/main/resources/application.properties` com os dados do seu ambiente:
-
+### **1. Requisitos Prévios**
+* Java 17 instalado.
+* Node.js e Angular CLI instalados.
+* PostgreSQL rodando localmente.
+---
+### **2. Configuração do Banco de Dados**
+Crie um banco de dados chamado `biblioteca_db` no seu PostgreSQL e ajuste as credenciais no arquivo `biblioteca-backend/src/main/resources/application.properties`:
 ```properties
 spring.datasource.url=jdbc:postgresql://localhost:5432/biblioteca_db
-spring.datasource.username=SEU_USUARIO
-spring.datasource.password=SUA_SENHA
+spring.datasource.username=seu_usuario
+spring.datasource.password=sua_senha
 
-spring.jpa.hibernate.ddl-auto=update
-spring.jpa.show-sql=true
-spring.jpa.properties.hibernate.format_sql=true
-spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
 ```
-
-## Como executar a aplicação
-
-### 1) Subir o backend
-
-No terminal, dentro de `biblioteca-backend`:
-
-```bash
+---
+### **3. Executando o Backend**
+```properties
+cd biblioteca-backend
 mvn spring-boot:run
+
 ```
-
-Backend disponível em:
-
-- API: `http://localhost:8080`
-- Swagger UI: `http://localhost:8080/swagger-ui/index.html`
-
-### 2) Subir o frontend
-
-Em outro terminal, dentro de `biblioteca-frontend`:
-
-```bash
+---
+### **4. Executando o Frontend**
+```properties   
+cd biblioteca-frontend
 npm install
-npm start
+ng serve
+
+
 ```
+---
+### **Como Testar a Aplicação**
+Usuários: Cadastre um usuário na aba de Usuários.
 
-Frontend disponível em:
+Livros: Vá na aba de Livros e utilize a busca do Google para popular seu acervo rapidamente ou cadastre manualmente.
 
-- App: `http://localhost:4200`
+Empréstimo: Na tela de Empréstimos, realize uma retirada.
 
-## Fluxo de execução recomendado
+Devolução e Recomendação: Clique em "Devolver" em um registro ativo. Ao selecionar o mesmo usuário novamente no campo de seleção, o quadro de Recomendações aparecerá sugerindo novos livros.
 
-1. Inicie o PostgreSQL.
-2. Garanta que o banco `biblioteca_db` exista.
-3. Configure usuário/senha no `application.properties`.
-4. Suba o backend.
-5. Suba o frontend.
-6. Acesse `http://localhost:4200`.
-
-## Comandos úteis
-
-### Backend
-
-```bash
-mvn test
-```
-
-### Frontend
-
-```bash
-npm run build
-npm test
-```
+Testes de Código: No terminal do backend, rode mvn test para validar as regras de serviço com JUnit e Mockito.
